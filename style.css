@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+#home {
+
+    display: flex;
+    /*mode baris*/
+    align-items: center;
+    /*Supaya teks dan foto rata tengah secara vertikal*/
+    justify-content: space-between;
+    /*mendorong teks ke kiri mentok, foto ke kanan mentok*/
+    margin: 20px;
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
