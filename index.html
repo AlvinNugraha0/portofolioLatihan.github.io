@@ -5,12 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio</title>
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Icon: Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header id="main-navbar">
-        <h1>Alvin Nghraaa</h1>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="material-symbols-outlined" style="color: var(--primary);">terminal</span>
+            <h1>Alvin Nghraaa</h1>
+        </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -47,16 +58,19 @@
 
                     <div class="skill-list">
                         <div class="skill-item">
-                            <img src="img/html.png" alt="HTML">
                             <p>HTML</p>
                         </div>
                         <div class="skill-item">
-                            <img src="img/css.png" alt="CSS">
                             <p>CSS</p>
                         </div>
                         <div class="skill-item">
-                            <img src="img/js.png" alt="JavaScript">
                             <p>JavaScript</p>
+                        </div>
+                        <div class="skill-item">
+                            <p>Adobe Photoshop</p>
+                        </div>
+                        <div class="skill-item">
+                            <p>Adobe Illustrator</p>
                         </div>
                     </div>
                 </div>
@@ -95,15 +109,15 @@
 
                 <div class="contact-link">
                     <div class="link-item">
-                        <span>@</span>
+                        <span class="material-symbols-outlined">alternate_email</span>
                         <p>alviananugraha@gmail.com</p>
                     </div>
                     <div class="link-item">
-                        <span>@</span>
+                        <span class="material-symbols-outlined">code</span>
                         <p>github.com/alvinNugraha</p>
                     </div>
                     <div class="link-item">
-                        <span>@</span>
+                        <span class="material-symbols-outlined">link</span>
                         <p>linkedin.com/in/alvin-nugraha</p>
                     </div>
                 </div>
@@ -134,12 +148,16 @@
             </div>
         </section>
     </main>
-    <footer class="footer-content">
-        <p>© 2025 Alvin Nugraha. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#">Linkedin</a>
-            <a href="#">Github</a>
-            <a href="#">Twitter</a>
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-content">
+                <p>© 2025 Alvin Nugraha. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Linkedin</a>
+                    <a href="#">Github</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
         </div>
     </footer>
 </body>

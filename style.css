@@ -1,150 +1,401 @@
+/* --- 1. CSS VARIABLES (DESIGN TOKENS) --- */
+:root {
+    /* Color Palette derived from the Tailwind Reference */
+    --bg-dark: #101622;
+    /* The main dark blue background */
+    --bg-surface: #1e293b;
+    /* Slightly lighter blue for cards/sections */
+    --border-color: #282e39;
+    /* Subtle border color */
+    --primary: #135bec;
+    /* Electric Blue for buttons/actions */
+    --primary-hover: #2563eb;
+    /* Slightly lighter blue for hover states */
+    --text-main: #ffffff;
+    /* Pure white for headings */
+    --text-muted: #94a3b8;
+    /* Gray-ish text for paragraphs */
+
+    /* Spacing & Sizing */
+    --container-width: 1000px;
+    --header-height: 70px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+/* --- 2. GLOBAL RESET & BASE STYLES --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    /* Smooth scrolling when clicking nav links */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* Common Typography */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: -0.01em;
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 60ch;
+    /* Optimal line length for reading */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Utility to center content */
+main {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+    /* Vertical spacing between sections */
+}
+
+/* --- 3. NAVBAR (GLASSMORPHISM) --- */
 #main-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+
+    /* Sticky & Glass Effect */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(16, 22, 34, 0.8);
+    /* Semi-transparent dark bg */
+    backdrop-filter: blur(12px);
+    /* The blur magic */
+    border-bottom: 1px solid var(--border-color);
+
+    padding: 0 40px;
+    height: var(--header-height);
+}
+
+#main-navbar h1 {
+    font-size: 1.25rem;
+    margin: 0;
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
-    list-style: none;
+    gap: 32px;
 }
 
+.nav-links a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* --- 4. HERO SECTION (#home) --- */
 #home {
-
+    min-height: calc(100vh - var(--header-height));
     display: flex;
-    /*mode baris*/
     align-items: center;
-    /*Supaya teks dan foto rata tengah secara vertikal*/
     justify-content: space-between;
-    /*mendorong teks ke kiri mentok, foto ke kanan mentok*/
-    margin: 20px;
+    gap: 50px;
 }
 
+.home-text {
+    flex: 1;
+}
+
+.home-text h1 {
+    font-size: 3.5rem;
+    /* Bigger hero title */
+}
+
+.home-text p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+#home img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(19, 91, 236, 0.15);
+    /* Blue glow shadow */
+    border: 1px solid var(--border-color);
+}
+
+/* --- 5. ABOUT & SKILLS --- */
 #about {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px;
+    gap: 60px;
+}
+
+#about img {
+    width: 300px;
+    border-radius: var(--radius-lg);
+    filter: grayscale(20%);
+    /* Artistic touch */
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    margin-bottom: 2rem;
+}
+
+.skills h2 {
+    font-size: 1.5rem;
+    /* Smaller sub-header for styling */
+    margin-bottom: 1rem;
+    color: var(--text-main);
 }
 
 .skill-list {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Skill Item -> Styled like "Tech Stack" pills */
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s;
+}
+
+.skill-item:hover {
+    border-color: var(--primary);
+    /* Highlight on hover */
 }
 
 .skill-item img {
-    width: 100px;
-    height: auto;
+    width: 20px;
+    height: 20px;
 }
 
-/* Container project */
+.skill-item p {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- 6. PROJECTS (Modern Cards) --- */
 .project-list {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsive grid */
+    gap: 30px;
 }
 
-/* Desain kartu Card */
 .project-item {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    /* Lift up effect */
+    border-color: var(--primary);
 }
 
 .project-item img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
+    margin-bottom: 15px;
 }
 
-/* Contact */
+.project-item p {
+    color: var(--text-main);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* --- 7. CONTACT FORM --- */
 #contact {
     display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    margin: 20px;
+    gap: 60px;
+    align-items: flex-start;
 }
 
 .contact-info {
     flex: 1;
 }
 
-.contact-form-container {
-    flex: 1;
-    background-color: #1a1a1a;
-    padding: 30px;
-    border-radius: 10px;
+.sub-title {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 10px;
 }
 
+.contact-link {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.link-item span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-muted);
+}
+
+.contact-form-container {
+    flex: 1;
+    background-color: var(--bg-surface);
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+/* Form Inputs styling */
 .form-grup {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-grup label {
     display: block;
-    margin-bottom: 5px;
-    color: #ccc;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-main);
 }
 
 .form-grup input,
 .form-grup textarea {
     width: 100%;
-    padding: 8px;
-    background-color: #333;
-    border: none;
+    padding: 12px 16px;
+    background-color: var(--bg-dark);
+    /* Input lighter/darker contrast */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
     color: white;
-    border-radius: 4px;
+    font-family: inherit;
+    transition: all 0.2s;
 }
 
+.form-grup input:focus,
+.form-grup textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(19, 91, 236, 0.1);
+}
+
+/* Button Styling (Primary) */
 button {
     width: 100%;
-    padding: 12px;
-    background-color: #2563eb;
+    background-color: var(--primary);
     color: white;
+    font-weight: 600;
+    padding: 14px;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
-/* style Footer */
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- 8. FOOTER --- */
 footer {
-    background-color: #0f172a;
-    margin-top: 50px;
-    border-top: 1px solid #1e293b;
+    background-color: var(--bg-dark);
+    margin-top: 100px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-wrapper {
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 40px;
-    color: #64748b;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .footer-links a {
-    color: #64748b;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-    transition: color 0.3s;
+    color: var(--text-muted);
+    margin-left: 24px;
+    transition: color 0.2s;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--text-main);
 }
