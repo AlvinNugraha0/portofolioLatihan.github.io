@@ -128,8 +128,30 @@ section {
     font-size: 0.95rem;
 }
 
-.nav-links a:hover {
-    color: var(--text-main);
+.nav-links a.active {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Typing Cursor Animation */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: var(--primary);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 /* --- 4. HERO SECTION (#home) --- */
